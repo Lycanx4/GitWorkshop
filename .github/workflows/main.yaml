@@ -4,7 +4,7 @@ name: My First Workflow
 on:
   push:
     branches:
-      - releases/*
+      - release/*
 
 # Jobs in the workflow
 jobs:
@@ -18,7 +18,7 @@ jobs:
     - name: Checkout the  current repo
       uses: actions/checkout@v3
       with:
-        branch: releases/*
+        branch: release/*
 
     - name: List my current directory after Checkout
       run: ls -la
