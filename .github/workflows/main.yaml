@@ -1,24 +1,26 @@
-name: My First Workflow
+name: Release and deploy Todo
 
 #trigger
 on:
   push:
     branches:
-      - release/*
+      - "release/.+"
 
 # Jobs in the workflow
 jobs:
 #job name
-  my-first-workflow:
+  mrelease-and-deploy:
     #OS that this workflow will be running on
     runs-on: ubuntu-latest
 
     #list of steps to perform task
     steps: 
+    - name: Echo the branch name
+      run: echo "current branch - ${{ github.ref_name }}"
     - name: Checkout the  current repo
       uses: actions/checkout@v3
       with:
-        branch: release/*
+        ref: ${{ github.ref_name }}
 
     - name: List my current directory after Checkout
       run: ls -la
